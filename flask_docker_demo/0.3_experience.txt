@@ -1,0 +1,39 @@
+Command for docker Build: docker build -t flask_docker . 
+
+Log for above command:
+
+[+] Building 38.4s (9/9) FINISHED
+ => [internal] load build definition from Dockerfile                                                                                                                        0.0s
+ => => transferring dockerfile: 32B                                                                                                                                         0.0s 
+ => [internal] load .dockerignore                                                                                                                                           0.0s 
+ => => transferring context: 2B                                                                                                                                             0.0s 
+ => [internal] load metadata for docker.io/continuumio/anaconda3:4.4.0                                                                                                     12.1s 
+ => [internal] load build context                                                                                                                                           0.0s
+ => => transferring context: 420B                                                                                                                                           0.0s 
+ => CACHED [1/4] FROM docker.io/continuumio/anaconda3:4.4.0@sha256:c6bb52bffe028b4b436b085afa4044db9b3d687a95468c92578467c9c2d4ac31                                         0.0s 
+ => [2/4] COPY ./flask_docker_demo /usr/local/python/                                                                                                                       0.0s 
+ => [3/4] WORKDIR /usr/local/python/                                                                                                                                        0.0s 
+ => [4/4] RUN pip install -r requirements.txt                                                                                                                              24.9s 
+ => exporting to image                                                                                                                                                      1.2s
+ => => exporting layers                                                                                                                                                     1.2s
+ => => writing image sha256:b47d231a167cce27a3196e6e465b1abbb170789125d2266b6a9f7bea0ef46590                                                                                0.0s
+ => => naming to docker.io/library/flask_docker 
+
+Command for listing docker images: docker images
+
+Command for docker image run: docker run -p 5000:5000 flask_docker
+
+Log for above command:
+
+ * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+
+Download docker for windows: https://docs.docker.com/desktop/windows/install/
+
+Errors encountered:
+
+1. docker: Error response from daemon: Ports are not available: listen tcp 0.0.0.0:5000: bind: An attempt was made to access a socket in a way forbidden by its access permissions.
+    - solution: 1.1 --> https://forums.docker.com/t/error-starting-userland-proxy-listen-tcp-0-0-0-0-bind-an-attempt-was-made-to-access-a-socket-in-a-way-forbidden-by-its-access-permissions/81299
+                1.2 --> While dev work, port 5000 was used manier times and hence 5000 port was already in use. Restarted PC solved the issue. After PC restart, ports were reset to default.
+
+2. ModuleNotFoundError: No module named 'sklearn.ensemble._forest'
+    - solution: 2.1 --> https://stackoverflow.com/questions/65758102/no-module-name-sklearn-forest-ensemble
