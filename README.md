@@ -1,5 +1,5 @@
 # Flask, Docker & Apache for prduction ready Machine learning Deployment
-Demo on how to interact flask with docker for deploying machine learning models in production.
+Demonstration on how to implement production ready machine learning system.
 
 Table of contents :eyes:
 =================
