@@ -58,16 +58,16 @@ Screenshots :camera_flash:
 ===========
 
 - Flask with docker | postman 
-![post man api outcome](https://github.com/Akshaykumarcp/hello-world-with-flask-and-docker-/blob/main/flask_docker_demo/after_docker_run_postman_predictFromFile_API.jpg)
+![post man api outcome](https://github.com/Akshaykumarcp/flask-docker-apache-WSGI/blob/main/flask_docker_demo/screenshots/after_docker_run_postman_predictFromFile_API.jpg)
 
 - Flask with docker | swagger
-![swagger outcome](https://github.com/Akshaykumarcp/hello-world-with-flask-and-docker-/blob/main/flask_docker_demo/after_docker_run_swagger.jpg)
+![swagger outcome](https://github.com/Akshaykumarcp/flask-docker-apache-WSGI/blob/main/flask_docker_demo/screenshots/after_docker_run_swagger.jpg)
 
 - Flask with docker & apache (& WSGI) | postman 
-![post man api outcome](https://github.com/Akshaykumarcp/hello-world-with-flask-and-docker-/blob/main/flask_docker_demo/after_docker_run_postman_predictFromFile_API.jpg)
+![post man api outcome](https://github.com/Akshaykumarcp/flask-docker-apache-WSGI/blob/main/flask_docker_demo/screenshots/after_docker_run_postman_predictFromFile_API_apache.jpg)
 
 - Flask with docker & apache (& WSGI) | swagger
-![swagger outcome](https://github.com/Akshaykumarcp/hello-world-with-flask-and-docker-/blob/main/flask_docker_demo/after_docker_run_swagger.jpg)
+![swagger outcome](https://github.com/Akshaykumarcp/flask-docker-apache-WSGI/blob/main/flask_docker_demo/screenshots/after_docker_run_swagger_apache.jpg)
 
 Note: The only difference between "Flask with docker" & "Flask with docker & apache (& WSGI)" screenshots is the URL.
 
