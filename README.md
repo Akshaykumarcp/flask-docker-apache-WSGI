@@ -52,7 +52,7 @@ How to run :running:
   docker ps 
   ```
 - Visit http://localhost:8000/apidocs/ or trigger the API via postman API client
-- Note: Have a look at the [flask_docker_demo\experience.txt](https://github.com/Akshaykumarcp/hello-world-with-flask-and-docker-/blob/main/flask_docker_demo/0.3_experience.txt) file for more info!
+- Note: Have a look at the [flask_docker_demo\experience.txt](https://github.com/Akshaykumarcp/flask-docker-apache-WSGI/blob/main/flask_docker_demo/experience.txt) file for more info!
 
 Screenshots :camera_flash:
 ===========
