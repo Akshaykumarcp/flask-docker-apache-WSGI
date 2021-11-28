@@ -1,4 +1,4 @@
-# Flask, Docker & Apache for prduction ready Machine learning Deployment
+# Flask, Docker & Apache for production ready Machine Learning System
 Demonstration on how to implement production ready machine learning system.
 
 Table of contents :eyes:
