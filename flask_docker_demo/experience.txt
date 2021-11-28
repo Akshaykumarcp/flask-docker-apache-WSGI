@@ -1,0 +1,104 @@
+1. FLASK WITH DOCKER WITHOUT APACHE WEB SERVER AND WSGI
+
+1.1 Command for docker Build: docker build -t flask_docker . 
+
+Log for above command:
+
+[+] Building 38.4s (9/9) FINISHED
+ => [internal] load build definition from Dockerfile                                                                                                                        0.0s
+ => => transferring dockerfile: 32B                                                                                                                                         0.0s 
+ => [internal] load .dockerignore                                                                                                                                           0.0s 
+ => => transferring context: 2B                                                                                                                                             0.0s 
+ => [internal] load metadata for docker.io/continuumio/anaconda3:4.4.0                                                                                                     12.1s 
+ => [internal] load build context                                                                                                                                           0.0s
+ => => transferring context: 420B                                                                                                                                           0.0s 
+ => CACHED [1/4] FROM docker.io/continuumio/anaconda3:4.4.0@sha256:c6bb52bffe028b4b436b085afa4044db9b3d687a95468c92578467c9c2d4ac31                                         0.0s 
+ => [2/4] COPY ./flask_docker_demo /usr/local/python/                                                                                                                       0.0s 
+ => [3/4] WORKDIR /usr/local/python/                                                                                                                                        0.0s 
+ => [4/4] RUN pip install -r requirements.txt                                                                                                                              24.9s 
+ => exporting to image                                                                                                                                                      1.2s
+ => => exporting layers                                                                                                                                                     1.2s
+ => => writing image sha256:b47d231a167cce27a3196e6e465b1abbb170789125d2266b6a9f7bea0ef46590                                                                                0.0s
+ => => naming to docker.io/library/flask_docker 
+
+1.2 Command for listing docker images: docker images
+
+1.3 Command for docker image run: docker run -p 5000:5000 flask_docker
+
+Log for above command:
+
+ * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+
+-----------------------------------------------------------------------------------------------
+
+2.FLASK WITH DOCKER WITH APACHE WEB SERVER AND WSGI
+
+2.1 J:\VSCODE_WORKSPACE\deploy ml application with dockers>docker build -t flask_docker_apache .
+
+    Log for above command:
+
+    [+] Building 43.0s (13/13) FINISHED
+    => [internal] load build definition from Dockerfile                                                                                                                                         0.0s
+    => => transferring dockerfile: 32B                                                                                                                                                          0.0s 
+    => [internal] load .dockerignore                                                                                                                                                            0.0s 
+    => => transferring context: 2B                                                                                                                                                              0.0s 
+    => [internal] load metadata for docker.io/continuumio/anaconda3:4.4.0                                                                                                                      12.1s 
+    => [internal] load build context                                                                                                                                                            0.0s
+    => => transferring context: 923B                                                                                                                                                            0.0s 
+    => [1/8] FROM docker.io/continuumio/anaconda3:4.4.0@sha256:c6bb52bffe028b4b436b085afa4044db9b3d687a95468c92578467c9c2d4ac31                                                                 0.0s 
+    => CACHED [2/8] RUN apt-get update && apt-get install -y apache2     apache2-dev     vim  && apt-get clean  && apt-get autoremove  && rm -rf /var/lib/apt/lists/*                           0.0s 
+    => CACHED [3/8] WORKDIR /var/www/flask_predict_api/                                                                                                                                         0.0s 
+    => [4/8] COPY ./flask_predict_api.wsgi /var/www/flask_predict_api/flask_predict_api.wsgi                                                                                                    0.0s 
+    => [5/8] COPY ./flask_docker_demo /var/www/flask_predict_api/                                                                                                                               0.0s 
+    => [6/8] RUN pip install -r requirements.txt                                                                                                                                               28.2s
+    => [7/8] RUN /opt/conda/bin/mod_wsgi-express install-module                                                                                                                                 0.5s
+    => [8/8] RUN mod_wsgi-express setup-server flask_predict_api.wsgi --port=8000     --user www-data --group www-data     --server-root=/etc/mod_wsgi-express-80                               0.7s
+    => exporting to image                                                                                                                                                                       1.3s
+    => => exporting layers                                                                                                                                                                      1.3s
+    => => writing image sha256:b22adabffa7abeaff9ef3f872887708fb84ac6342c25dbc56bae053b6ace261d                                                                                                 0.0s
+    => => naming to docker.io/library/flask_docker_apache 
+
+2.2 J:\VSCODE_WORKSPACE\deploy ml application with dockers>docker run -d -p 8000:8000 flask_docker_apache
+    fb58d6f338fc5508bb5615135ece6a1745f7a4d8a8953ad00c0f0f8acc665903
+
+2.3 J:\VSCODE_WORKSPACE\deploy ml application with dockers>docker ps                                                                                                                99,11         29% 
+
+    Log for above command:
+
+    CONTAINER ID   IMAGE                 COMMAND                  CREATED         STATUS         PORTS                    NAMES
+    0fcf8d39e344   flask_docker_apache   "/usr/bin/tini -- /b…"   3 minutes ago   Up 3 minutes   0.0.0.0:8000->8000/tcp   heuristic_swartz
+
+2.4 J:\VSCODE_WORKSPACE\deploy ml application with dockers>docker exec -it 0fcf8d39e344 bash
+    root@0fcf8d39e344:/var/www/flask_predict_api# cd /etc/mod_wsgi-express-80
+    root@0fcf8d39e344:/etc/mod_wsgi-express-80# vim error_log
+
+    # OUTPUT for above command: displays error logs of application when application fails to run as expected
+
+2.5 J:\VSCODE_WORKSPACE\deploy ml application with dockers>docker stop 0fcf8d39e344
+    0fcf8d39e344
+
+2.6 After stopping the docker image, fix the error, build the docker image and start the application using above commands
+
+2.7 Stop the application. J:\VSCODE_WORKSPACE\deploy ml application with dockers>docker stop fb58d6f338fc  
+    fb58d6f338fc
+
+2.8 J:\VSCODE_WORKSPACE\deploy ml application with dockers>docker ps
+
+    Log for above command:
+
+    CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+-------------------------------------------------------------------------------------------
+
+Errors encountered:
+
+1. docker: Error response from daemon: Ports are not available: listen tcp 0.0.0.0:5000: bind: An attempt was made to access a socket in a way forbidden by its access permissions.
+    - solution: 1.1 --> https://forums.docker.com/t/error-starting-userland-proxy-listen-tcp-0-0-0-0-bind-an-attempt-was-made-to-access-a-socket-in-a-way-forbidden-by-its-access-permissions/81299
+                1.2 --> While dev work, port 5000 was used manier times and hence 5000 port was already in use. Restarted PC solved the issue. After PC restart, ports were reset to default.
+
+2. ModuleNotFoundError: No module named 'sklearn.ensemble._forest'
+    - solution: 2.1 --> https://stackoverflow.com/questions/65758102/no-module-name-sklearn-forest-ensemble
+
+------------------------------------------------------------------------------------------
+
+Ref: Download docker for windows: https://docs.docker.com/desktop/windows/install/
