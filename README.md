@@ -81,7 +81,7 @@ License :book:
 
 <br/><br/>
 
-Screenshots :grinning:
+Connect with me :grinning:
 ===========
 [<img align="left" alt="" width="22px" src="https://simpleicons.org/icons/linkedin.svg" />](https://www.linkedin.com/in/akshay-kumar-c-p/)
 [<img align="left" alt="" width="22px" src="https://simpleicons.org/icons/github.svg" />](https://github.com/Akshaykumarcp)
